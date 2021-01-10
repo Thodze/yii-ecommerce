@@ -36,7 +36,7 @@ AppAsset::register($this);
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="<?= \yii\helpers\Url::to(['/']) ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
@@ -46,7 +46,7 @@ AppAsset::register($this);
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">
-            <a class="nav-link" href="charts.html">
+            <a class="nav-link" href="<?= \yii\helpers\Url::to(['/product/index']) ?>">
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Products</span></a>
         </li>
@@ -282,7 +282,9 @@ AppAsset::register($this);
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <?= $content ?>
+            <div class="p-3">
+                <?= $content ?>
+            </div>
             <!-- /.container-fluid -->
 
         </div>
@@ -292,7 +294,7 @@ AppAsset::register($this);
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2020</span>
+                    <span>Copyright &copy; Your Website 2021</span>
                 </div>
             </div>
         </footer>
