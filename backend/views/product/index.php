@@ -24,21 +24,42 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id',
+            [
+                'attribute' => 'id',
+                'contentOptions' => [
+                    'style' => 'width: 100px'
+                ]
+            ],
             'name',
-            'description:ntext',
-            'image',
-            'price',
-            //'status',
-            //'created_at',
-            //'updated_at',
+            [
+                'attribute' => 'image',
+                'content' => function ($model) {
+                    return Html::img($model->getImageUrl(), ['style' => 'width: 100px']);
+                }
+            ],
+            'description:html',
+            [
+                'attribute' => 'price',
+            ],
+            [
+                'attribute' => 'status',
+                'content' => function ($model) {
+                    return Html::tag('span', $model->status ? 'Active' : 'Draft', [
+                        'class' => $model->status ? 'badge badge-success' : 'badge badge-danger'
+                    ]);
+                },
+                'contentOptions' => [
+                    'style' => 'width: 100px'
+                ]
+            ],
+            'created_at:datetime',
+            'updated_at:datetime',
             //'created_by',
             //'updated_by',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'common\grid\ActionColumn'],
         ],
+//        'pager' => \yii\bootstrap4\LinkPager::class
     ]); ?>
 
 
